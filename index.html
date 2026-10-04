@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>División de factura</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <div>
+                <p class="eyebrow">GESTIÓN DE FACTURA</p>
+                <h1>División de servicios</h1>
+                <p class="subtitle">
+                    Distribución de los costos entre dos inquilinos
+                </p>
+            </div>
+        </header>
+
+
+        <!-- =========================
+             CARGAR FACTURA
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-number">00</span>
+                    <h2>Cargar factura</h2>
+                </div>
+
+                <span class="section-description">
+                    PDF de EDESA
+                </span>
+            </div>
+
+
+            <div class="form-grid single">
+
+                <div class="field">
+                    <label for="facturaPdf">
+                        Factura en PDF
+                    </label>
+
+                    <input
+                        type="file"
+                        id="facturaPdf"
+                        accept="application/pdf,.pdf"
+                    >
+                </div>
+
+            </div>
+
+
+            <div id="estadoFactura" class="error"></div>
+
+        </section>
+
+
+        <!-- =========================
+             DATOS DE LA FACTURA
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-number">01</span>
+                    <h2>Datos de la factura</h2>
+                </div>
+
+                <span class="section-description">
+                    EDESA
+                </span>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="cargoFijo5">
+                        Cargo fijo · 5 días
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cargoFijo5"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="cargoFijo25">
+                        Cargo fijo · 25 días
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cargoFijo25"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="energia70">
+                        Energía activa · 70 kWh
+                    </label>
+
+                    <input
+                        type="number"
+                        id="energia70"
+                        step="0.0001"
+                        placeholder="$/kWh"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="energia130">
+                        Energía activa · 130 kWh
+                    </label>
+
+                    <input
+                        type="number"
+                        id="energia130"
+                        step="0.0001"
+                        placeholder="$/kWh"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="energia219">
+                        Energía excedente · 219 kWh
+                    </label>
+
+                    <input
+                        type="number"
+                        id="energia219"
+                        step="0.0001"
+                        placeholder="$/kWh"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="ivaEdesa">
+                        IVA consumidor final
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ivaEdesa"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OTROS SERVICIOS
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-number">02</span>
+                    <h2>Otros servicios</h2>
+                </div>
+
+                <span class="section-description">
+                    Alumbrado · Aguas · LUSAL
+                </span>
+            </div>
+
+
+            <h3>Alumbrado público EDESA</h3>
+
+            <div class="form-grid single">
+
+                <div class="field">
+                    <label for="alumbradoPublico">
+                        Alumbrado público
+                    </label>
+
+                    <input
+                        type="number"
+                        id="alumbradoPublico"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+            </div>
+
+
+            <h3>Aguas del Norte</h3>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="cargoFijoAguas">
+                        Cargo fijo
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cargoFijoAguas"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="consumoAguas">
+                        Consumo equivalente
+                    </label>
+
+                    <input
+                        type="number"
+                        id="consumoAguas"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="tasaAguas">
+                        Tasa de fiscalización y control
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tasaAguas"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="ivaAguas">
+                        IVA
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ivaAguas"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+            </div>
+
+
+            <h3>LUSAL</h3>
+
+            <div class="form-grid single">
+
+                <div class="field">
+                    <label for="mantenimientoLusal">
+                        Mantenimiento de alumbrado público
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mantenimientoLusal"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONSUMO
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-number">03</span>
+                    <h2>Consumo de los inquilinos</h2>
+                </div>
+
+                <span class="section-description">
+                    Distribución de kWh
+                </span>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="totalKwh">
+                        Consumo total
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="totalKwh"
+                            step="0.01"
+                            placeholder="0,00"
+                        >
+
+                        <span>kWh</span>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="persona1Kwh">
+                        Consumo persona 1
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="persona1Kwh"
+                            step="0.01"
+                            placeholder="0,00"
+                        >
+
+                        <span>kWh</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="error" class="error"></div>
+
+
+            <button
+                type="button"
+                id="calcularBtn"
+                class="button"
+            >
+                Calcular división
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTADOS
+        ========================== -->
+
+        <section
+            id="resultados"
+            class="results hidden"
+        >
+
+            <div class="results-header">
+                <div>
+                    <p class="eyebrow">RESULTADO</p>
+                    <h2>Distribución de la factura</h2>
+                </div>
+            </div>
+
+
+            <!-- CONSUMO -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <h3>Consumo</h3>
+                </div>
+
+                <div class="people-grid">
+
+                    <div class="person-box">
+
+                        <span class="person-label">
+                            Persona 1
+                        </span>
+
+                        <strong id="resultadoKwh1">
+                            -
+                        </strong>
+
+                        <span>kWh</span>
+
+                        <small id="resultadoPorcentaje1">
+                            -
+                        </small>
+
+                    </div>
+
+
+                    <div class="person-box">
+
+                        <span class="person-label">
+                            Persona 2
+                        </span>
+
+                        <strong id="resultadoKwh2">
+                            -
+                        </strong>
+
+                        <span>kWh</span>
+
+                        <small id="resultadoPorcentaje2">
+                            -
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BLOQUES -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <h3>Distribución de energía</h3>
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Bloque</th>
+                                <th>Persona 1</th>
+                                <th>Persona 2</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>70 kWh</td>
+
+                                <td>
+                                    <span id="bloque70Persona1">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+
+                                <td>
+                                    <span id="bloque70Persona2">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>130 kWh</td>
+
+                                <td>
+                                    <span id="bloque130Persona1">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+
+                                <td>
+                                    <span id="bloque130Persona2">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>219 kWh excedentes</td>
+
+                                <td>
+                                    <span id="bloque219Persona1">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+
+                                <td>
+                                    <span id="bloque219Persona2">
+                                        -
+                                    </span>
+                                    kWh
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENERGÍA -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <h3>Costo de energía</h3>
+                </div>
+
+
+                <div class="people-grid">
+
+                    <div class="person-box detail">
+
+                        <span class="person-label">
+                            Persona 1
+                        </span>
+
+                        <p>
+                            Bloque 70
+                            <strong>
+                                $<span id="energia70Persona1">-</span>
+                            </strong>
+                        </p>
+
+                        <p>
+                            Bloque 130
+                            <strong>
+                                $<span id="energia130Persona1">-</span>
+                            </strong>
+                        </p>
+
+                        <p>
+                            Bloque 219
+                            <strong>
+                                $<span id="energia219Persona1">-</span>
+                            </strong>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p class="total-line">
+                            Total energía
+                            <strong>
+                                $<span id="energiaTotalPersona1">-</span>
+                            </strong>
+                        </p>
+
+                    </div>
+
+
+                    <div class="person-box detail">
+
+                        <span class="person-label">
+                            Persona 2
+                        </span>
+
+                        <p>
+                            Bloque 70
+                            <strong>
+                                $<span id="energia70Persona2">-</span>
+                            </strong>
+                        </p>
+
+                        <p>
+                            Bloque 130
+                            <strong>
+                                $<span id="energia130Persona2">-</span>
+                            </strong>
+                        </p>
+
+                        <p>
+                            Bloque 219
+                            <strong>
+                                $<span id="energia219Persona2">-</span>
+                            </strong>
+                        </p>
+
+                        <div class="line"></div>
+
+                        <p class="total-line">
+                            Total energía
+                            <strong>
+                                $<span id="energiaTotalPersona2">-</span>
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REPARTO -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <h3>Resumen del reparto</h3>
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Persona 1</th>
+                                <th>Persona 2</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>EDESA</td>
+
+                                <td>
+                                    $<span id="edesaPersona1">
+                                        -
+                                    </span>
+                                </td>
+
+                                <td>
+                                    $<span id="edesaPersona2">
+                                        -
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Aguas del Norte</td>
+
+                                <td>
+                                    $<span id="aguasPersona1">
+                                        -
+                                    </span>
+                                </td>
+
+                                <td>
+                                    $<span id="aguasPersona2">
+                                        -
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Alumbrado + LUSAL</td>
+
+                                <td>
+                                    $<span id="alumbradoPersona1">
+                                        -
+                                    </span>
+                                </td>
+
+                                <td>
+                                    $<span id="alumbradoPersona2">
+                                        -
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="final-card">
+
+                <div>
+
+                    <span class="final-label">
+                        Total persona 1
+                    </span>
+
+                    <strong>
+                        $<span id="totalPersona1">
+                            -
+                        </span>
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span class="final-label">
+                        Total persona 2
+                    </span>
+
+                    <strong>
+                        $<span id="totalPersona2">
+                            -
+                        </span>
+                    </strong>
+
+                </div>
+
+
+                <div class="final-total">
+
+                    <span class="final-label">
+                        Total repartido
+                    </span>
+
+                    <strong>
+                        $<span id="totalRepartido">
+                            -
+                        </span>
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
